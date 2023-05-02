@@ -1,9 +1,10 @@
 
-README - StratGeez
-Description
-StratGeez est un projet de stratégie de trading algorithmique basé sur des indicateurs techniques. Le but est d'analyser les signaux de marché et de prendre des positions d'achat et de vente en conséquence. Le projet est composé de trois fichiers principaux qui définissent la logique de la stratégie de trading, les positions et le calcul des indicateurs techniques.
+StratGeez est un projet de stratégie de trading algorithmique basé sur des indicateurs techniques. Le but est d'analyser les signaux de marché et de prendre des positions d'achat et de vente en conséquence. 
+Le projet est composé de trois fichiers principaux qui définissent la logique de la stratégie de trading, les positions et le calcul des indicateurs techniques.
 
-Fichiers et classes
+
+- Fichiers et classes
+
 
 1. stratgeez.py
 
@@ -24,7 +25,9 @@ long_ema_window: Fenêtre de la moyenne mobile exponentielle longue (par défaut
 add_technical_indicators(self, show_log=True): Ajoute les indicateurs techniques au DataFrame et renvoie le DataFrame modifié.
 populate_buy_sell(self, show_log=False): Détermine les signaux d'achat et de vente en fonction des indicateurs techniques et renvoie le DataFrame modifié.
 
+
 2. position.py : 
+
 Ce fichier contient la classe Position, qui gère les positions de trading ouvertes et fermées, ainsi que les informations sur les frais et la valeur du portefeuille. La classe Position est utilisée par la classe StratGeez pour interagir avec les positions de trading en fonction des signaux générés par les indicateurs techniques.
 
 Les principales méthodes de la classe Position sont :
@@ -35,11 +38,11 @@ close_position: Ferme une position de trading ouverte en fonction des signaux de
 check_opening_position: Vérifie s'il est possible d'ouvrir une nouvelle position en fonction des signaux d'achat.
 check_closing_position: Vérifie s'il est possible de fermer une position ouverte en fonction des signaux de vente.
 
-indicator.py : 
+
+3. indicator.py : 
 Ce fichier contient la classe Indicator, qui est responsable du calcul des indicateurs techniques utilisés dans la stratégie de trading. Les indicateurs sont calculés en utilisant la bibliothèque ta (Technical Analysis) et d'autres fonctions personnalisées.
 
 Les principales méthodes de la classe Indicator sont :
-
 calculate_knn: Calcule les signaux de trading en utilisant l'algorithme K-nearest neighbors (KNN) pour les caractéristiques spécifiées.
 calculate_obv: Calcule l'indicateur On Balance Volume (OBV) et l'ajoute au DataFrame.
 calculate_rsi: Calcule l'indicateur Relative Strength Index (RSI) et l'ajoute au DataFrame.
@@ -47,14 +50,18 @@ calculate_super_trend: Calcule l'indicateur SuperTrend et l'ajoute au DataFrame.
 calculate_ema: Calcule les moyennes mobiles exponentielles (EMA) à court et à long terme et les ajoute au DataFrame.
 calculate_macd_crossover: Calcule les croisements de l'indicateur Moving Average Convergence Divergence (MACD) et les ajoute au DataFrame.
 
-/  RUN  \
-Lancer les tests historiques 
+
+main.py : 
+Ce fichier est le point d'entrée du programme et permet de lancer des backtests historiques en utilisant la classe Backtest. 
+
+Pour l'instant, les backtests sont effectués uniquement sur les données historiques, mais des tests en temps réel seront ajoutés ultérieurement.
+
+Le fichier main.py charge les données historiques à partir d'un fichier CSV spécifié et utilise la classe StratGeez pour définir la stratégie de trading. 
+Ensuite, il crée une instance de la classe Backtest pour effectuer les tests et récupérer les résultats.
 
 Pour lancer les tests historiques sur des données de marché, vous devez utiliser la classe Backtest avec les données historiques du marché que vous souhaitez tester. 
-le fichier de référance est main.py
 
-
-Mise à jour des données historiques
+- Mise à jour des données historiques
 Pour charger de nouvelles données historiques, vous devez mettre à jour le fichier dll.js avec les informations de la paire de devises, de l'intervalle de temps et de la date de début. Voici un exemple de configuration :
 
 pair_list = ["BTCUSDT"]
