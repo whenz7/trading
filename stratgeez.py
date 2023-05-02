@@ -19,7 +19,7 @@ class StratGeez():
         self.short_ema_window = 20
         self.long_ema_window = 50
     
-    def add_technical_indicators(self, show_log=True):
+    def add_technical_indicators(self):
         print("- add_technical_indicators -")
         df = self.df
         df.drop(columns=df.columns.difference(['open','high','low','close','volume']), inplace=True)
@@ -31,9 +31,9 @@ class StratGeez():
         df = self.indicator.calculate_macd_crossover(df)
         #df = get_n_columns(df, ["super_trend_direction", "ema_short", "ema_long", "rsi", "obv", "macd" ], 1)
         self.df = df # mise à jour du DataFrame ici
-        return df
+        return self.df
 
-    def populate_buy_sell(self, show_log=False): 
+    def populate_buy_sell(self): 
         print("- populate_buy_sell -")
         df = self.df
         df["open_long_limit"] = False
